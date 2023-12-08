@@ -2,8 +2,11 @@ from tkinter import*
 from tkinter import simpledialog 
 import tkinter as tk
 from tkinter import ttk
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import random
 
+plt.rcParams['font.family'] = 'Malgun Gothic'
 answer=random.randint(1,100)
 #answer=random.randint(1,100)
 count=0 #시도횟수
@@ -66,7 +69,26 @@ def update_ranking():
         rank_format = f"{idx}위" if idx >= 10 else f"{idx}위 "
         tree.insert("", "end", values=(rank_format, name, tries))  
 
+def plot_histogram():
+    # 사용자 이름과 시도 횟수 추출
+    user_names = [data[0] for data in player_data]
+    tries = [data[1] for data in player_data]
 
+    # 히스토그램 그리기
+    plt.figure(figsize=(6, 4))
+    plt.bar(user_names, tries, color='skyblue',width=0.2)
+    plt.xlabel('사용자 이름')
+    plt.ylabel('시도 횟수')
+    plt.title('그래프')
+    
+    histogram_window = Toplevel(window)
+    histogram_window.title("히스토그램")
+    histogram_window.geometry('800x600')
+
+    # Matplotlib 그림을 Tkinter 창에 삽입
+    canvas = FigureCanvasTkAgg(plt.gcf(), master=histogram_window)
+    canvas.draw()
+    canvas.get_tk_widget().place(x=200, y=50)  # 필요한 경우 좌표를 조정하세요
 
 def guessing():
     try:
@@ -145,7 +167,7 @@ resetButton.place(x=413,y=300)
 hintButton = Button(f1,text="힌트",fg="blue",bg="white",command=hint)
 hintButton.place(x=461,y=300)
 
-histogram_button = tk.Button(window, text="통계",fg="orange",bg="white")
+histogram_button = tk.Button(window, text="통계",fg="orange",bg="white",command=plot_histogram)
 histogram_button.place(x=497, y=300)
 
 
