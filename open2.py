@@ -23,7 +23,8 @@ canvas2.place(x=75,y=200)
 
 resultLabel1 = Label(f1,text="결과:",bg="#E0E0E0")
 resultLabel1.place(x=260,y=270)
-
+resultLabel2 = Label(f1,text="      ",bg="#E0E0E0")
+resultLabel2.place(x=290,y=270)
 
 
 
