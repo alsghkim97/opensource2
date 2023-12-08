@@ -64,6 +64,15 @@ def hint():
     messagebox.showinfo("힌트",f"{hint1} ~ {hint2} 사이의 숫자")
 #힌트 함수
 #팝업창으로 띄우게하기
+    
+def reset():
+    global answer
+    global count
+#    
+    answer=random.randint(1,100)
+    count=0
+    resultLabel2["text"]="다시한번하세요!"
+#초기화 함수
 
 def on_entry_click(event):
     if guessField.get() == "1에서 100까지의 숫자중 하나를 입력하세요":
@@ -84,7 +93,7 @@ guessField.bind("<FocusIn>", on_entry_click) # 클릭하면 사라지는 함수 
 tryButton = Button(f1,text="시도",fg="green",bg="white",command=guessing)
 tryButton.place(x=377,y=300)
 
-resetButton = Button(f1,text="초기화",fg="red",bg="white")
+resetButton = Button(f1,text="초기화",fg="red",bg="white",command=reset)
 resetButton.place(x=413,y=300)
 
 hintButton = Button(f1,text="힌트",fg="blue",bg="white",command=hint)
