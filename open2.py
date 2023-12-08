@@ -39,7 +39,8 @@ resetButton.place(x=413,y=300)
 hintButton = Button(f1,text="힌트",fg="blue",bg="white")
 hintButton.place(x=461,y=300)
 
-
+histogram_button = tk.Button(window, text="통계",fg="orange",bg="white")
+histogram_button.place(x=497, y=300)
 
 
 
