@@ -103,11 +103,12 @@ histogram_button = tk.Button(window, text="통계",fg="orange",bg="white")
 histogram_button.place(x=497, y=300)
 
 
-
-
-
 f1.pack(fill="both",expand=True)
 
+canvas3 = Canvas(window,width=452,height=50, bg="#afeeee")
+canvas3.create_text(225,30,fill="darkblue",font="Times 15 italic bold",
+                   text="순위표") 
+canvas3.place(x=75,y=365)
 
 
 
